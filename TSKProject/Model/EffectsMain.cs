@@ -9,10 +9,14 @@ namespace TSKProject.Model
 {
     class EffectsMain
     {
+        public EffectsMain()
+        {
+            delay = new Delay();
+        }
+
         public void LoadFile(string fileName)
         {
             audioFile = new AudioFileReader(fileName);
-
         }
 
         public void Play()
@@ -22,10 +26,12 @@ namespace TSKProject.Model
                 outputDevice = new WaveOutEvent();
                 outputDevice.PlaybackStopped += OnPlaybackStopped;
             }
-
             if (audioFile != null)
             {
-                outputDevice.Init(audioFile);
+                // Temp delay processing test
+                IWaveProvider processed = delay.Process(audioFile, 1000, 0.1f);
+
+                outputDevice.Init(processed);
                 outputDevice.Play();
             }
         }
@@ -38,5 +44,6 @@ namespace TSKProject.Model
 
         private AudioFileReader audioFile;
         private WaveOutEvent outputDevice;
+        private Delay delay;
     }
 }
