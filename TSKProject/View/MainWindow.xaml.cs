@@ -30,5 +30,11 @@ namespace TSKProject.View
             MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
             vm.OnOpenFileClick();
         }
+
+        private void OnPlayClick(object sender, RoutedEventArgs e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnPlayClick();
+        }
     }
 }
