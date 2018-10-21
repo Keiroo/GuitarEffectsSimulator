@@ -1,6 +1,10 @@
-﻿using NAudio.Wave;
+﻿using NWaves.Audio;
+using NWaves.Audio.Interfaces;
+using NWaves.Audio.Mci;
+using NWaves.Signals;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,32 +15,61 @@ namespace TSKProject.Model
     {
         public void LoadFile(string fileName)
         {
-            audioFile = new AudioFileReader(fileName);
-
-        }
-
-        public void Play()
-        {
-            if (outputDevice == null)
+            this.fileName = fileName;
+            using (var stream = new FileStream(fileName, FileMode.Open))
             {
-                outputDevice = new WaveOutEvent();
-                outputDevice.PlaybackStopped += OnPlaybackStopped;
+                waveFile = new WaveFile(stream);
             }
 
-            if (audioFile != null)
+            delay = new Delay();
+        }
+
+        public async void PlayAsync()
+        {
+            if (waveFile != null)
             {
-                outputDevice.Init(audioFile);
-                outputDevice.Play();
+                // Process delay
+                DiscreteSignal processed = delay.Process(waveFile, 10000, 0.5f);
+                
+                if (audioPlayer == null)
+                {
+                    audioPlayer = new MciAudioPlayer();
+                }
+
+                audioPlayer.Stop();
+
+                var processedFileName = string.Format("{0}.wav", Guid.NewGuid());
+                using (var stream = new FileStream(processedFileName, FileMode.Create))
+                {
+                    var waveFile = new WaveFile(processed);
+                    waveFile.SaveTo(stream);
+                }
+
+                await audioPlayer.PlayAsync(processedFileName);
+
+                // cleanup temporary file
+                File.Delete(processedFileName);
             }
         }
 
-        private void OnPlaybackStopped(object sender, StoppedEventArgs args)
+        public async void PlayUnprocessed()
         {
-            outputDevice.Dispose();
-            outputDevice = null;
+            if (waveFile != null)
+            {
+                if (audioPlayer == null)
+                {
+                    audioPlayer = new MciAudioPlayer();
+                }
+
+                audioPlayer.Stop();
+
+                await audioPlayer.PlayAsync(fileName);
+            }
         }
 
-        private AudioFileReader audioFile;
-        private WaveOutEvent outputDevice;
+        private WaveFile waveFile;
+        private string fileName;
+        private MciAudioPlayer audioPlayer;
+        private Delay delay;
     }
 }

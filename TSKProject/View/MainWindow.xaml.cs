@@ -36,5 +36,11 @@ namespace TSKProject.View
             MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
             vm.OnPlayClick();
         }
+
+        private void OnPlayUnprocessedClick(object sender, RoutedEventArgs e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnPlayUnprocessedClick();
+        }
     }
 }

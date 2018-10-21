@@ -35,7 +35,12 @@ namespace TSKProject.ViewModel
 
         public void OnPlayClick()
         {
-            main.Play();
+            main.PlayAsync();
+        }
+
+        public void OnPlayUnprocessedClick()
+        {
+            main.PlayUnprocessed();
         }
 
         protected void OnPropertyChanged(string name)

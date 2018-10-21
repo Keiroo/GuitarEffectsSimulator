@@ -16,6 +16,7 @@
         <Button Content="Open File" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="OnOpenFileClick"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding FileName, Mode=TwoWay}"/>
         <Button Content="Play" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="75" Click="OnPlayClick"/>
+        <Button Content="Play Unprocessed" HorizontalAlignment="Left" Margin="110,56,0,0" VerticalAlignment="Top" Width="109" Click="OnPlayUnprocessedClick"/>
 
     </Grid>
 </Window>
