@@ -16,7 +16,7 @@ namespace TSKProject.Model
 
         public void LoadFile(string fileName)
         {
-            audioFile = new AudioFileReader(fileName);
+            audioFile = new WaveFileReader(fileName);
         }
 
         public void Play()
@@ -29,10 +29,10 @@ namespace TSKProject.Model
             if (audioFile != null)
             {
                 // Temp delay processing test
-                IWaveProvider processed = delay.Process(audioFile, 1000, 0.1f);
+                WaveStream processed = delay.Process(audioFile, 100, 0.5f);
 
-                outputDevice.Init(processed);
-                outputDevice.Play();
+                //outputDevice.Init(processed);
+                //outputDevice.Play();
             }
         }
 
@@ -42,7 +42,7 @@ namespace TSKProject.Model
             outputDevice = null;
         }
 
-        private AudioFileReader audioFile;
+        private WaveFileReader audioFile;
         private WaveOutEvent outputDevice;
         private Delay delay;
     }
