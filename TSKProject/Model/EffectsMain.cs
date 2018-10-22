@@ -67,6 +67,14 @@ namespace TSKProject.Model
             }
         }
 
+        public void Stop()
+        {
+            if (audioPlayer != null)
+            {
+                audioPlayer.Stop();
+            }            
+        }
+
         private WaveFile waveFile;
         private string fileName;
         private MciAudioPlayer audioPlayer;

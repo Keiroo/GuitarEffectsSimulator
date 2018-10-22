@@ -42,7 +42,8 @@
         <Button Grid.Column="0" Grid.Row="0" Content="Open File" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="OnOpenFileClick"/>
         <Button Grid.Column="0" Grid.Row="0" Content="Play" HorizontalAlignment="Left" Margin="124,65,0,0" VerticalAlignment="Top" Width="75" Click="OnPlayClick"/>
         <Button Grid.Column="0" Grid.Row="0" Content="Play Unprocessed" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="109" Click="OnPlayUnprocessedClick"/>
-
+        <Button Grid.Column="0" Grid.Row="0" Content="Stop" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Width="75" Click="OnStopClick"/>
+        
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="Delay" Margin="112,10,122,0" />
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="0" Margin="22,44,236,0" />
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="10000" Margin="198,41,29,0" Width="37" />

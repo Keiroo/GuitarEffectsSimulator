@@ -54,5 +54,11 @@ namespace TSKProject.View
             MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
             vm.OnPropertyChanged("DelayGain");
         }
+
+        private void OnStopClick(object sender, RoutedEventArgs e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnStopClick();
+        }
     }
 }

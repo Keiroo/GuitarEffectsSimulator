@@ -47,6 +47,11 @@ namespace TSKProject.ViewModel
             main.PlayUnprocessed();
         }
 
+        public void OnStopClick()
+        {
+            main.Stop();
+        }
+
         public void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
