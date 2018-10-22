@@ -24,12 +24,12 @@ namespace TSKProject.Model
             delay = new Delay();
         }
 
-        public async void PlayAsync()
+        public async void PlayAsync(int delaySamples, float delayGain)
         {
             if (waveFile != null)
             {
                 // Process delay
-                DiscreteSignal processed = delay.Process(waveFile, 10000, 0.5f);
+                DiscreteSignal processed = delay.Process(waveFile, delaySamples, delayGain);
                 
                 if (audioPlayer == null)
                 {

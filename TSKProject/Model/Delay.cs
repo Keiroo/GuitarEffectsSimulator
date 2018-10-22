@@ -12,11 +12,20 @@ namespace TSKProject.Model
 {
     class Delay : Effect
     {
-        public DiscreteSignal Process(WaveFile waveFile, int delaySamples, float gain)
+        public DiscreteSignal Process(WaveFile waveFile, int delaySamples, float delayGain)
         {
             var signal = waveFile[Channels.Left];
             //var delay = new DelayEffect(delaySamples / waveFile.WaveFmt.SamplingRate, 0.5f);
-            var delay = new DelayEffect(delaySamples / (float)waveFile.WaveFmt.SamplingRate, gain);
+            int samples;
+            float gain;
+
+            // Default values if zeros
+            if (delaySamples != 0) samples = delaySamples;
+            else samples = 1;
+            if (delayGain != 0) gain = delayGain;
+            else gain = 0.01f;
+
+            var delay = new DelayEffect(samples / (float)waveFile.WaveFmt.SamplingRate, gain);
             var processed = delay.ApplyTo(signal);
 
 

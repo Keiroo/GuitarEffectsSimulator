@@ -12,7 +12,11 @@ namespace TSKProject.ViewModel
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         public string FileName { get; set; }
+        public EffectsProperties Properties { get; set; }
+        public int DelaySamples { get; set; }
+        public float DelayGain { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
+        
 
         public MainWindowViewModel()
         {
@@ -35,7 +39,7 @@ namespace TSKProject.ViewModel
 
         public void OnPlayClick()
         {
-            main.PlayAsync();
+            main.PlayAsync(DelaySamples, DelayGain);
         }
 
         public void OnPlayUnprocessedClick()
@@ -43,7 +47,7 @@ namespace TSKProject.ViewModel
             main.PlayUnprocessed();
         }
 
-        protected void OnPropertyChanged(string name)
+        public void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }       

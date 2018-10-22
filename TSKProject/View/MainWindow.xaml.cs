@@ -42,5 +42,17 @@ namespace TSKProject.View
             MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
             vm.OnPlayUnprocessedClick();
         }
+
+        private void DelaySamplesSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnPropertyChanged("DelaySamples");
+        }
+
+        private void DelayGainSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnPropertyChanged("DelayGain");
+        }
     }
 }
