@@ -15,26 +15,36 @@ namespace TSKProject.Model
     {
         public DiscreteSignal Process(WaveFile waveFile, int delaySamples, float delayGain, float volume, bool bypass)
         {
+            DiscreteSignal output;
             var input = waveFile[Channels.Left];
-            int samples;
-            float gain;
 
-            // Default values if zeros
-            if (delaySamples != 0) samples = delaySamples;
-            else samples = 1;
-            if (delayGain != 0) gain = delayGain;
-            else gain = 0.01f;
+            if (!bypass)
+            {                
+                int samples;
+                float gain;
 
-            // Process delay
-            var delayProcessed = ApplyDelay(input, delaySamples, delayGain);
+                // Default values if zeros
+                if (delaySamples != 0) samples = delaySamples;
+                else samples = 1;
+                if (delayGain != 0) gain = delayGain;
+                else gain = 0.01f;
 
-            // Apply volume control
-            var volumeProcessed = ProcessVolume(delayProcessed, volume);
+                // Process delay
+                var delayProcessed = ApplyDelay(input, delaySamples, delayGain);
 
-            // Apply clipping
-            // TODO
+                // Apply volume control
+                var volumeProcessed = ProcessVolume(delayProcessed, volume);
 
-            var output = volumeProcessed;
+                // Apply clipping
+                // TODO
+
+                output = volumeProcessed;
+            }
+            else
+            {
+                output = input;
+            }
+            
 
             return output;
         }
