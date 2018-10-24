@@ -15,6 +15,8 @@ namespace TSKProject.ViewModel
         public EffectsProperties Properties { get; set; }
         public int DelaySamples { get; set; }
         public float DelayGain { get; set; }
+        public float DelayVolume { get; set; }
+        public bool DelayBypass { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         
 
@@ -41,7 +43,7 @@ namespace TSKProject.ViewModel
         {
             // Apply saved variables to sturcture
             var properties = new EffectsProperties(
-                DelaySamples, DelayGain, 1.0f, false);
+                DelaySamples, DelayGain, DelayVolume, DelayBypass);
 
             main.PlayAsync(properties);
         }

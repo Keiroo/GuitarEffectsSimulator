@@ -55,6 +55,12 @@ namespace TSKProject.View
             vm.OnPropertyChanged("DelayGain");
         }
 
+        private void DelayVolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnPropertyChanged("DelayVolume");
+        }
+
         private void OnStopClick(object sender, RoutedEventArgs e)
         {
             MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
