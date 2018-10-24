@@ -38,6 +38,7 @@ namespace TSKProject.Model
 
                 audioPlayer.Stop();
 
+                // Save processed file to stream
                 var processedFileName = string.Format("{0}.wav", Guid.NewGuid());
                 using (var stream = new FileStream(processedFileName, FileMode.Create))
                 {

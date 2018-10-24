@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NWaves;
 using NWaves.Audio;
 using NWaves.Effects;
+using NWaves.Filters.Base;
 using NWaves.Signals;
 
 namespace TSKProject.Model
@@ -25,11 +26,36 @@ namespace TSKProject.Model
             if (delayGain != 0) gain = delayGain;
             else gain = 0.01f;
 
-            var delay = new DelayEffect(samples / (float)waveFile.WaveFmt.SamplingRate, gain);
-            var processed = delay.ApplyTo(signal);
+            // Process delay
+            var delayed = ApplyDelay(signal, delaySamples, delayGain);
 
+            // Apply volume control
+            // TODO
 
-            return processed;
+            // Apply clipping
+            // TODO
+
+            return delayed;
+        }
+
+        private DiscreteSignal ApplyDelay(DiscreteSignal signal, int samples, float gain)
+        {
+            var input = signal.Samples;
+            var output = new float[input.Length];
+
+            // Copy first samples that delay doesn't affect
+            for (var i = 0; i < samples; i++)
+            {
+                output[i] = input[i];
+            }
+
+            // Apply delay and gain to signal
+            for (var i = samples; i < signal.Length; i++)
+            {
+                output[i] = input[i] + gain * input[i - samples];
+            }
+
+            return new DiscreteSignal(signal.SamplingRate, output);
         }
     }
 }
