@@ -13,10 +13,9 @@ namespace TSKProject.Model
 {
     class Delay : Effect
     {
-        public DiscreteSignal Process(WaveFile waveFile, int delaySamples, float delayGain)
+        public DiscreteSignal Process(WaveFile waveFile, int delaySamples, float delayGain, float volume, bool bypass)
         {
-            var signal = waveFile[Channels.Left];
-            //var delay = new DelayEffect(delaySamples / waveFile.WaveFmt.SamplingRate, 0.5f);
+            var input = waveFile[Channels.Left];
             int samples;
             float gain;
 
@@ -27,15 +26,17 @@ namespace TSKProject.Model
             else gain = 0.01f;
 
             // Process delay
-            var delayed = ApplyDelay(signal, delaySamples, delayGain);
+            var delayProcessed = ApplyDelay(input, delaySamples, delayGain);
 
             // Apply volume control
-            // TODO
+            var volumeProcessed = ProcessVolume(delayProcessed, volume);
 
             // Apply clipping
             // TODO
 
-            return delayed;
+            var output = volumeProcessed;
+
+            return output;
         }
 
         private DiscreteSignal ApplyDelay(DiscreteSignal signal, int samples, float gain)

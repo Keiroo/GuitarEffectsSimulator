@@ -37,6 +37,7 @@
         <Border Grid.RowSpan="2" Grid.ColumnSpan="3"/>
         <Border Grid.RowSpan="3" Grid.ColumnSpan="3"/>
 
+
         <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding FileName, Mode=TwoWay}" Margin="9,37,0,0"/>
         <Button Grid.Column="0" Grid.Row="0" Content="Open File" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="OnOpenFileClick"/>
         <Button Grid.Column="0" Grid.Row="0" Content="Play" HorizontalAlignment="Left" Margin="124,65,0,0" VerticalAlignment="Top" Width="75" Click="OnPlayClick"/>
@@ -44,16 +45,18 @@
         <Button Grid.Column="0" Grid.Row="0" Content="Stop" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Width="75" Click="OnStopClick"/>
 
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="Delay" Margin="112,10,113,0" Width="39" />
-        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="0" Margin="22,44,236,0" />
-        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="10000" Margin="198,41,29,0" Width="37" />
-        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="Samples" Margin="97,41,113,0" Width="54" />
-        <Slider Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Margin="22,62,29,143" Width="213" Maximum="10000" Minimum="0" 
+        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="1" Margin="22,41,235,0" />
+        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="10000" Margin="147,41,80,0" Width="37" />
+        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="Samples" Margin="200,41,10,0" Width="54" />
+        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding DelaySamples, Mode=OneWay}" Margin="200,65,10,0" Width="54" />
+        <Slider Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Margin="22,62,80,143" Width="162" Maximum="10000" Minimum="1" 
                 TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding DelaySamples, Mode=OneWayToSource}" ValueChanged="DelaySamplesSlider_ValueChanged"/>
 
-        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="0" Margin="22,91,235,0" />
-        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="1" Margin="229,91,29,0" />
-        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="Gain" Margin="112,91,113,0" Width="39" />
-        <Slider Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Margin="22,107,29,93" Width="213" Maximum="1" Minimum="0" 
+        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="0.01" Margin="22,91,212,0" Width="30" />
+        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="1" Margin="172,91,86,0" />
+        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="Gain" Margin="208,91,17,0" Width="39" />
+        <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding DelayGain, Mode=OneWay, StringFormat=N2}" Margin="200,109,25,0" Width="39" />
+        <Slider Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Margin="22,107,80,93" Width="162" Maximum="1" Minimum="0.01" 
                 Value="{Binding DelayGain, Mode=OneWayToSource}" ValueChanged="DelayGainSlider_ValueChanged"/>
 
     </Grid>

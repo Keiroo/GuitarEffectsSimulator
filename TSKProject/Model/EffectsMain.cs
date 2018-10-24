@@ -21,6 +21,7 @@ namespace TSKProject.Model
                 waveFile = new WaveFile(stream);
             }
 
+            // Create effects objects
             delay = new Delay();
         }
 
@@ -29,20 +30,23 @@ namespace TSKProject.Model
             if (waveFile != null)
             {
                 // Process delay
-                DiscreteSignal processed = delay.Process(waveFile, delaySamples, delayGain);
-                
+                DiscreteSignal delayProcessed = delay.Process(waveFile, delaySamples, delayGain, 1.0f, false);
+
+                // Redirect last proccesed effect to output
+                var output = delayProcessed;
+
                 if (audioPlayer == null)
                 {
                     audioPlayer = new MciAudioPlayer();
                 }
 
-                audioPlayer.Stop();
+                audioPlayer.Stop();                
 
                 // Save processed file to stream
                 var processedFileName = string.Format("{0}.wav", Guid.NewGuid());
                 using (var stream = new FileStream(processedFileName, FileMode.Create))
                 {
-                    var waveFile = new WaveFile(processed);
+                    var waveFile = new WaveFile(output);
                     waveFile.SaveTo(stream);
                 }
 
