@@ -39,7 +39,11 @@ namespace TSKProject.ViewModel
 
         public void OnPlayClick()
         {
-            main.PlayAsync(DelaySamples, DelayGain);
+            // Apply saved variables to sturcture
+            var properties = new EffectsProperties(
+                DelaySamples, DelayGain, 1.0f, false);
+
+            main.PlayAsync(properties);
         }
 
         public void OnPlayUnprocessedClick()

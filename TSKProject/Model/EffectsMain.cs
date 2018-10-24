@@ -25,12 +25,15 @@ namespace TSKProject.Model
             delay = new Delay();
         }
 
-        public async void PlayAsync(int delaySamples, float delayGain)
+        public async void PlayAsync(EffectsProperties properties)
         {
             if (waveFile != null)
             {
                 // Process delay
-                DiscreteSignal delayProcessed = delay.Process(waveFile, delaySamples, delayGain, 1.0f, false);
+                DiscreteSignal delayProcessed = delay.Process(
+                    waveFile,
+                    properties.DelaySamples, properties.DelayGain,
+                    properties.DelayVolume, properties.DelayBypass);
 
                 // Redirect last proccesed effect to output
                 var output = delayProcessed;

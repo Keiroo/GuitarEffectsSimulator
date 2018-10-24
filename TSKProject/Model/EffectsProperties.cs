@@ -7,27 +7,19 @@ using System.Threading.Tasks;
 
 namespace TSKProject.Model
 {
-    public struct EffectsProperties : INotifyPropertyChanged
+    public struct EffectsProperties
     {
-        public int DelaySamples { get; private set; }
-        public float DelayGain { get; private set; }
-        public event PropertyChangedEventHandler PropertyChanged;
+        public readonly int DelaySamples;
+        public readonly float DelayGain;
+        public readonly float DelayVolume;
+        public readonly bool DelayBypass;
 
-        public void SetDelaySamples(int value)
+        public EffectsProperties(int delaySamples, float delayGain, float delayVolume, bool delayBypass)
         {
-            DelaySamples = value;
-            OnPropertyChanged("DelaySamples");
-        }
-
-        public void SetDelayGain(float value)
-        {
-            DelayGain = value;
-            OnPropertyChanged("DelayGain");
-        }
-
-        public void OnPropertyChanged(string name)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            DelaySamples = delaySamples;
+            DelayGain = delayGain;
+            DelayVolume = delayVolume;
+            DelayBypass = delayBypass;
         }
     }
 }
