@@ -49,26 +49,26 @@
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="Delay" Margin="112,10,113,0" Width="39" />
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="1" Margin="22,41,235,0" />
+                   Text="0" Margin="22,41,235,0" />
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="10000" Margin="147,41,80,0" Width="37" />
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="Samples" Margin="200,41,10,0" Width="54" />
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="{Binding DelaySamples, Mode=OneWay}" Margin="200,65,10,0" Width="54" />
-        <Slider Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Margin="22,62,80,143" Width="162" Maximum="10000" Minimum="1" 
+        <Slider Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Margin="22,62,80,143" Width="162" Maximum="10000" Minimum="0" 
                 TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding DelaySamples, Mode=OneWayToSource}" ValueChanged="DelaySamplesSlider_ValueChanged"/>
 
         <!-- Delay Gain -->
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="0.01" Margin="22,91,212,0" Width="30" />
+                   Text="0" Margin="22,91,212,0" Width="30" />
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="1" Margin="172,91,86,0" />
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="Gain" Margin="200,91,25,0" Width="39" />
         <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="{Binding DelayGain, Mode=OneWay, StringFormat=N2}" Margin="200,109,25,0" Width="39" />
-        <Slider Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Margin="22,107,80,93" Width="162" Maximum="1" Minimum="0.01" 
+        <Slider Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Margin="22,107,80,93" Width="162" Maximum="1" Minimum="0" 
                 Value="{Binding DelayGain, Mode=OneWayToSource}" ValueChanged="DelayGainSlider_ValueChanged"/>
 
         <!-- Delay Volume -->
@@ -95,12 +95,12 @@
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="1" Margin="22,41,235,0" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="10000" Margin="147,41,80,0" Width="37" />
+                   Text="5" Margin="172,40,78,0" Width="14" RenderTransformOrigin="2.286,0.5" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="Samples" Margin="200,41,10,0" Width="54" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="{Binding FlangerSamples, Mode=OneWay}" Margin="200,65,10,0" Width="54" />
-        <Slider Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Margin="22,62,80,143" Width="162" Maximum="10000" Minimum="1" 
+        <Slider Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Margin="22,62,80,143" Width="162" Maximum="5" Minimum="0" 
                 TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding FlangerSamples, Mode=OneWayToSource}" ValueChanged="FlangerSamplesSlider_ValueChanged"/>
 
         <!-- Flanger Gain -->
@@ -129,15 +129,15 @@
 
         <!-- Flanger Speed -->
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="0" Margin="22,162,212,0" Width="30" />
+                   Text="1" Margin="22,162,212,0" Width="30" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="1" Margin="172,165,85,0" />
+                   Text="10" Margin="172,165,78,0" Width="14" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="Speed" Margin="200,165,18,0" Width="46" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="{Binding FlangerSpeed, Mode=OneWay, StringFormat=N2}" Margin="200,181,25,0" Width="39" />
-        <Slider Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Margin="22,180,80,20" Width="162" Maximum="100" Minimum="1" 
-                Value="{Binding FlangerSpeed, Mode=OneWayToSource}" ValueChanged="FlangerSpeedSlider_ValueChanged"/>
+        <Slider Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Margin="22,180,80,20" Width="162" Maximum="10" Minimum="1" 
+                TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding FlangerSpeed, Mode=OneWayToSource}" ValueChanged="FlangerSpeedSlider_ValueChanged"/>
 
         <!-- Flanger Bypass -->
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 

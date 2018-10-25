@@ -77,7 +77,7 @@ namespace TSKProject.Model
         private int D(int d, int n, float F, int samplingRate)
         {
             var cos = Math.Cos(2 * Math.PI * F * (n / (float)samplingRate));
-            var coeff = (cos + 1) / 2;
+            var coeff = (cos + 1);
             var res = (int)(d * coeff);
             return res;
         }
