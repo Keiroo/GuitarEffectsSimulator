@@ -10,27 +10,28 @@ namespace TSKProject.Model
 {
     class Flanger : Effect
     {
-        public DiscreteSignal Process(WaveFile waveFile, int delaySamples, float delayGain, float volume, bool bypass)
+        public DiscreteSignal Process(DiscreteSignal input, int flangerSamples, float flangerGain, float volume, float flangerSpeed, bool bypass)
         {
             DiscreteSignal output;
-            var input = waveFile[Channels.Average];
 
             if (!bypass)
             {
                 int samples;
-                float gain;
+                float gain, speed;
 
                 // Default values if zeros
-                if (delaySamples != 0) samples = delaySamples;
+                if (flangerSamples != 0) samples = flangerSamples;
                 else samples = 1;
-                if (delayGain != 0) gain = delayGain;
+                if (flangerGain != 0) gain = flangerGain;
                 else gain = 0.01f;
+                if (flangerSpeed != 0) speed = flangerSpeed;
+                else speed = 1f;
 
                 // Process delay
-                var delayProcessed = ProcessFlanger(input, delaySamples, delayGain);
+                var processed = ProcessFlanger(input, samples, gain, speed);
 
                 // Apply volume control
-                var volumeProcessed = ProcessVolume(delayProcessed, volume);
+                var volumeProcessed = ProcessVolume(processed, volume);
 
                 output = volumeProcessed;
             }
@@ -43,32 +44,17 @@ namespace TSKProject.Model
             return output;
         }
 
-        private DiscreteSignal ProcessFlanger(DiscreteSignal signal, int samples, float gain)
+        private DiscreteSignal ProcessFlanger(DiscreteSignal signal, int samples, float gain, float speed)
         {
             var input = signal.Samples;
             var output = new float[input.Length];
-
-            //// Copy first samples that delay doesn't affect
-            //for (var i = 0; i < samples; i++)
-            //{
-            //    output[i] = input[i];
-            //}
-
-            //// Apply delay and gain to signal
-            //for (var i = samples; i < signal.Length; i++)
-            //{
-            //    output[i] = input[i] + gain * input[i - samples];
-
-            //    // Decrease output to avoid going over limit
-            //    output[i] *= 0.5f;
-            //}
 
             for (var i = 0; i < signal.Length; i++)
             {
                 int delay;
 
                 // Prevent from diving by zero
-                if (i > 0) delay = D(samples, i);
+                if (i > 0) delay = D(samples, i, speed, signal.SamplingRate);
                 else delay = 1;
 
                 // Prevent from going out of array
@@ -88,9 +74,12 @@ namespace TSKProject.Model
             return new DiscreteSignal(signal.SamplingRate, output);
         }
 
-        private int D(int d, int n)
+        private int D(int d, int n, float F, int samplingRate)
         {
-            return (int)(d / 2 * (Math.Cos(2 * Math.PI * n)));
+            var cos = Math.Cos(2 * Math.PI * F * (n / (float)samplingRate));
+            var coeff = (cos + 1) / 2;
+            var res = (int)(d * coeff);
+            return res;
         }
     }
 }

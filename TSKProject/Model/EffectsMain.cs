@@ -18,20 +18,31 @@ namespace TSKProject.Model
 
             // Create effects objects
             delay = new Delay();
+            flanger = new Flanger();
         }
 
         public async void PlayAsync(EffectsProperties properties)
         {
             if (waveFile != null)
             {
+                // Convert wave file to discrete signal
+                var signal = delay.WaveToSignal(waveFile);
+
                 // Process delay
                 DiscreteSignal delayProcessed = delay.Process(
-                    waveFile,
+                    signal,
                     properties.DelaySamples, properties.DelayGain,
                     properties.DelayVolume, properties.DelayBypass);
 
+                // Process flanger
+                DiscreteSignal flangerProcessed = flanger.Process(
+                    delayProcessed,
+                    properties.FlangerSamples, properties.FlangerGain,
+                    properties.FlangerVolume, properties.FlangerSpeed,
+                    properties.FlangerBypass);
+
                 // Redirect last proccesed effect to output
-                var output = delayProcessed;
+                var output = flangerProcessed;
 
                 if (audioPlayer == null)
                 {
@@ -82,5 +93,6 @@ namespace TSKProject.Model
         private string fileName;
         private MciAudioPlayer audioPlayer;
         private Delay delay;
+        private Flanger flanger;
     }
 }

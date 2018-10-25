@@ -89,5 +89,62 @@
         <CheckBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="22,201,212,10" 
                   IsChecked="{Binding DelayBypass, Mode=OneWayToSource}" />
 
+        <!-- Flanger Samples -->
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Flanger" Margin="103,10,100,0" Width="61" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="1" Margin="22,41,235,0" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="10000" Margin="147,41,80,0" Width="37" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Samples" Margin="200,41,10,0" Width="54" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="{Binding FlangerSamples, Mode=OneWay}" Margin="200,65,10,0" Width="54" />
+        <Slider Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Margin="22,62,80,143" Width="162" Maximum="10000" Minimum="1" 
+                TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding FlangerSamples, Mode=OneWayToSource}" ValueChanged="FlangerSamplesSlider_ValueChanged"/>
+
+        <!-- Flanger Gain -->
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="0.01" Margin="22,81,212,0" Width="30" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="1" Margin="172,81,85,0" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Gain" Margin="200,81,25,0" Width="39" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="{Binding FlangerGain, Mode=OneWay, StringFormat=N2}" Margin="200,102,25,0" Width="39" />
+        <Slider Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Margin="22,100,80,100" Width="162" Maximum="1" Minimum="0.01" 
+                Value="{Binding FlangerGain, Mode=OneWayToSource}" ValueChanged="FlangerGainSlider_ValueChanged"/>
+
+        <!-- Flanger Volume -->
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="0" Margin="22,120,212,0" Width="30" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="1" Margin="172,123,85,0" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Volume" Margin="200,123,18,0" Width="46" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="{Binding FlangerVolume, Mode=OneWay, StringFormat=N2}" Margin="200,144,25,0" Width="39" />
+        <Slider Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Margin="22,141,80,59" Width="162" Maximum="1" Minimum="0" 
+                Value="{Binding FlangerVolume, Mode=OneWayToSource}" ValueChanged="FlangerVolumeSlider_ValueChanged"/>
+
+        <!-- Flanger Speed -->
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="0" Margin="22,162,212,0" Width="30" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="1" Margin="172,165,85,0" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Speed" Margin="200,165,18,0" Width="46" />
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="{Binding FlangerSpeed, Mode=OneWay, StringFormat=N2}" Margin="200,181,25,0" Width="39" />
+        <Slider Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Margin="22,180,80,20" Width="162" Maximum="100" Minimum="1" 
+                Value="{Binding FlangerSpeed, Mode=OneWayToSource}" ValueChanged="FlangerSpeedSlider_ValueChanged"/>
+
+        <!-- Flanger Bypass -->
+        <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Bypass" Margin="46,208,172,0" Width="46" />
+        <CheckBox Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="25,208,223,0" 
+                  IsChecked="{Binding FlangerBypass, Mode=OneWayToSource}" />
+
+
     </Grid>
 </Window>

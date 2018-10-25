@@ -1,9 +1,15 @@
-﻿using NWaves.Signals;
+﻿using NWaves.Audio;
+using NWaves.Signals;
 
 namespace TSKProject.Model
 {
     class Effect
     {
+        public DiscreteSignal WaveToSignal(WaveFile waveFile)
+        {
+            return waveFile[Channels.Average];
+        }
+
         protected DiscreteSignal ProcessVolume(DiscreteSignal signal, float volume)
         {
             var input = signal.Samples;

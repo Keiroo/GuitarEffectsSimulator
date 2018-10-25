@@ -5,10 +5,9 @@ namespace TSKProject.Model
 {
     class Delay : Effect
     {
-        public DiscreteSignal Process(WaveFile waveFile, int delaySamples, float delayGain, float volume, bool bypass)
+        public DiscreteSignal Process(DiscreteSignal input, int delaySamples, float delayGain, float volume, bool bypass)
         {
             DiscreteSignal output;
-            var input = waveFile[Channels.Average];
 
             if (!bypass)
             {                
@@ -22,10 +21,10 @@ namespace TSKProject.Model
                 else gain = 0.01f;
 
                 // Process delay
-                var delayProcessed = ProcessDelay(input, delaySamples, delayGain);
+                var processed = ProcessDelay(input, samples, gain);
 
                 // Apply volume control
-                var volumeProcessed = ProcessVolume(delayProcessed, volume);
+                var volumeProcessed = ProcessVolume(processed, volume);
 
                 output = volumeProcessed;
             }

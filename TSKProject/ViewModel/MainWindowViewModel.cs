@@ -12,6 +12,11 @@ namespace TSKProject.ViewModel
         public float DelayGain { get; set; }
         public float DelayVolume { get; set; }
         public bool DelayBypass { get; set; }
+        public int FlangerSamples { get; set; }
+        public float FlangerGain { get; set; }
+        public float FlangerVolume { get; set; }
+        public float FlangerSpeed { get; set; }
+        public bool FlangerBypass { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         
 
@@ -38,7 +43,8 @@ namespace TSKProject.ViewModel
         {
             // Apply saved variables to sturcture
             var properties = new EffectsProperties(
-                DelaySamples, DelayGain, DelayVolume, DelayBypass);
+                DelaySamples, DelayGain, DelayVolume, DelayBypass,
+                FlangerSamples, FlangerGain, FlangerVolume, FlangerSpeed, FlangerBypass);
 
             main.PlayAsync(properties);
         }
