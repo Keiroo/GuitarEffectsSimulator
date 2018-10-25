@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NWaves;
-using NWaves.Audio;
-using NWaves.Effects;
-using NWaves.Filters.Base;
+﻿using NWaves.Audio;
 using NWaves.Signals;
 
 namespace TSKProject.Model
@@ -16,7 +8,7 @@ namespace TSKProject.Model
         public DiscreteSignal Process(WaveFile waveFile, int delaySamples, float delayGain, float volume, bool bypass)
         {
             DiscreteSignal output;
-            var input = waveFile[Channels.Left];
+            var input = waveFile[Channels.Average];
 
             if (!bypass)
             {                
@@ -30,13 +22,10 @@ namespace TSKProject.Model
                 else gain = 0.01f;
 
                 // Process delay
-                var delayProcessed = ApplyDelay(input, delaySamples, delayGain);
+                var delayProcessed = ProcessDelay(input, delaySamples, delayGain);
 
                 // Apply volume control
                 var volumeProcessed = ProcessVolume(delayProcessed, volume);
-
-                // Apply clipping
-                // TODO
 
                 output = volumeProcessed;
             }
@@ -49,7 +38,7 @@ namespace TSKProject.Model
             return output;
         }
 
-        private DiscreteSignal ApplyDelay(DiscreteSignal signal, int samples, float gain)
+        private DiscreteSignal ProcessDelay(DiscreteSignal signal, int samples, float gain)
         {
             var input = signal.Samples;
             var output = new float[input.Length];
