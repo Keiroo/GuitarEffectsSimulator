@@ -65,6 +65,7 @@
     <Compile Include="Model\Effect.cs" />
     <Compile Include="Model\EffectsMain.cs" />
     <Compile Include="Model\EffectsProperties.cs" />
+    <Compile Include="Model\Flanger.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

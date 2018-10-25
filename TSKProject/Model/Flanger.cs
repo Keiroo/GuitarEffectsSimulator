@@ -1,0 +1,96 @@
+﻿using NWaves.Audio;
+using NWaves.Signals;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TSKProject.Model
+{
+    class Flanger : Effect
+    {
+        public DiscreteSignal Process(WaveFile waveFile, int delaySamples, float delayGain, float volume, bool bypass)
+        {
+            DiscreteSignal output;
+            var input = waveFile[Channels.Average];
+
+            if (!bypass)
+            {
+                int samples;
+                float gain;
+
+                // Default values if zeros
+                if (delaySamples != 0) samples = delaySamples;
+                else samples = 1;
+                if (delayGain != 0) gain = delayGain;
+                else gain = 0.01f;
+
+                // Process delay
+                var delayProcessed = ProcessFlanger(input, delaySamples, delayGain);
+
+                // Apply volume control
+                var volumeProcessed = ProcessVolume(delayProcessed, volume);
+
+                output = volumeProcessed;
+            }
+            else
+            {
+                output = input;
+            }
+
+
+            return output;
+        }
+
+        private DiscreteSignal ProcessFlanger(DiscreteSignal signal, int samples, float gain)
+        {
+            var input = signal.Samples;
+            var output = new float[input.Length];
+
+            //// Copy first samples that delay doesn't affect
+            //for (var i = 0; i < samples; i++)
+            //{
+            //    output[i] = input[i];
+            //}
+
+            //// Apply delay and gain to signal
+            //for (var i = samples; i < signal.Length; i++)
+            //{
+            //    output[i] = input[i] + gain * input[i - samples];
+
+            //    // Decrease output to avoid going over limit
+            //    output[i] *= 0.5f;
+            //}
+
+            for (var i = 0; i < signal.Length; i++)
+            {
+                int delay;
+
+                // Prevent from diving by zero
+                if (i > 0) delay = D(samples, i);
+                else delay = 1;
+
+                // Prevent from going out of array
+                if (i - delay < 0)
+                {
+                    output[i] = input[i];
+                }
+                else
+                {
+                    output[i] = input[i] + gain * input[i - delay];
+                }
+
+                // Decrease output to avoid going over limit
+                output[i] *= 0.5f;
+            }
+
+            return new DiscreteSignal(signal.SamplingRate, output);
+        }
+
+        private int D(int d, int n)
+        {
+            return (int)(d / 2 * (Math.Cos(2 * Math.PI * n)));
+        }
+    }
+}

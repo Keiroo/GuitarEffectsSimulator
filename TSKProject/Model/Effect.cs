@@ -20,13 +20,5 @@ namespace TSKProject.Model
 
             return new DiscreteSignal(signal.SamplingRate, output);
         }
-
-        protected DiscreteSignal ProcessClipping(DiscreteSignal signal)
-        {
-
-
-
-            return null;
-        }
     }
 }
