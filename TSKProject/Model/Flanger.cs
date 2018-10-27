@@ -10,25 +10,25 @@ namespace TSKProject.Model
 {
     class Flanger : Effect
     {
-        public DiscreteSignal Process(DiscreteSignal input, int flangerSamples, float flangerGain, float volume, float flangerSpeed, bool bypass)
+        public DiscreteSignal Process(DiscreteSignal input, int flangerMiliseconds, float flangerGain, float volume, float flangerSpeed, bool bypass)
         {
             DiscreteSignal output;
 
             if (!bypass)
             {
-                int samples;
+                int miliseconds;
                 float gain, speed;
 
                 // Default values if zeros
-                if (flangerSamples != 0) samples = flangerSamples;
-                else samples = 1;
+                if (flangerMiliseconds != 0) miliseconds = flangerMiliseconds;
+                else miliseconds = 1;
                 if (flangerGain != 0) gain = flangerGain;
                 else gain = 0.01f;
                 if (flangerSpeed != 0) speed = flangerSpeed;
                 else speed = 1f;
 
                 // Process delay
-                var processed = ProcessFlanger(input, samples, gain, speed);
+                var processed = ProcessFlanger(input, miliseconds, gain, speed);
 
                 // Apply volume control
                 var volumeProcessed = ProcessVolume(processed, volume);
@@ -46,10 +46,12 @@ namespace TSKProject.Model
             return output;
         }
 
-        private DiscreteSignal ProcessFlanger(DiscreteSignal signal, int samples, float gain, float speed)
+        private DiscreteSignal ProcessFlanger(DiscreteSignal signal, int miliseconds, float gain, float speed)
         {
             var input = signal.Samples;
             var output = new float[input.Length];
+
+            var samples = (signal.SamplingRate / 1000) * miliseconds;
 
             for (var i = 0; i < signal.Length; i++)
             {
