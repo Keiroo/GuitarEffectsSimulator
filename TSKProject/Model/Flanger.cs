@@ -31,6 +31,7 @@ namespace TSKProject.Model
                 // Apply volume control
                 var volumeProcessed = ProcessVolume(processed, volume);
 
+                // Apply clipping
                 var clippingProcessed = ProcessClipping(volumeProcessed);
 
                 output = clippingProcessed;
