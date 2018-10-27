@@ -78,5 +78,31 @@ namespace TSKProject.View
             MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
             vm.OnPropertyChanged("FlangerSpeed");
         }
+
+        private void ChorusMilisecondsSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnPropertyChanged("ChorusMiliseconds");
+        }
+
+        private void ChorusGain1Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnPropertyChanged("ChorusGain1");
+        }
+
+        private void ChorusGain2Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnPropertyChanged("ChorusGain2");
+        }
+
+        private void ChorusVolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnPropertyChanged("ChorusVolume");
+        }
+
+
     }
 }

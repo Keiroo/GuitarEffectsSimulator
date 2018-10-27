@@ -6,7 +6,7 @@
         xmlns:vm="clr-namespace:TSKProject.ViewModel"
         xmlns:local="clr-namespace:TSKProject.View"
         mc:Ignorable="d"
-        Title="TSKProject" Height="500" Width="800">
+        Title="TSKProject" Height="600" Width="800">
 
     <Window.Resources>
         <vm:MainWindowViewModel x:Key="MainWindowViewModel"/>
@@ -145,6 +145,61 @@
         <CheckBox Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="25,208,223,0" 
                   IsChecked="{Binding FlangerBypass, Mode=OneWayToSource}" />
 
+        <!-- Chorus Miliseconds-->
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Chorus" Margin="103,10,100,0" Width="61" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="20" Margin="22,41,224,0" Width="18" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="40" Margin="172,40,78,0" Width="14" RenderTransformOrigin="2.286,0.5" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Miliseconds" Margin="191,41,0,0" Width="73" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="{Binding ChorusMiliseconds, Mode=OneWay}" Margin="200,65,10,0" Width="54" />
+        <Slider Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="22,62,80,143" Width="162" Maximum="40" Minimum="20" 
+                TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding ChorusMiliseconds, Mode=OneWayToSource}" ValueChanged="ChorusMilisecondsSlider_ValueChanged"/>
+
+        <!-- Chorus Gain 1 -->
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="0" Margin="22,81,212,0" Width="30" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="1" Margin="172,81,85,0" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Gain1" Margin="200,81,25,0" Width="39" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="{Binding ChorusGain1, Mode=OneWay, StringFormat=N2}" Margin="200,102,25,0" Width="39" />
+        <Slider Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="22,100,80,100" Width="162" Maximum="1" Minimum="0" 
+                Value="{Binding ChorusGain1, Mode=OneWayToSource}" ValueChanged="ChorusGain1Slider_ValueChanged"/>
+
+        <!-- Chorus Gain 2 -->
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="0" Margin="22,129,212,0" Width="30" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="1" Margin="172,129,85,0" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Gain2" Margin="200,129,25,0" Width="39" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="{Binding ChorusGain2, Mode=OneWay, StringFormat=N2}" Margin="200,150,25,0" Width="39" />
+        <Slider Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="22,147,80,100" Width="162" Maximum="1" Minimum="0" 
+                Value="{Binding ChorusGain2, Mode=OneWayToSource}" ValueChanged="ChorusGain2Slider_ValueChanged"/>
+
+        <!-- Chorus Volume -->
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="0" Margin="22,172,212,0" Width="30" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="1" Margin="172,172,85,0" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Volume" Margin="200,175,10,0" Width="54" />
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="{Binding ChorusVolume, Mode=OneWay, StringFormat=N2}" Margin="200,196,25,0" Width="39" />
+        <Slider Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="22,193,80,54" Width="162" Maximum="1" Minimum="0" 
+                Value="{Binding ChorusVolume, Mode=OneWayToSource}" ValueChanged="ChorusVolumeSlider_ValueChanged"/>
+
+        <!-- Chorus Bypass -->
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Bypass" Margin="43,230,175,0" Width="46" />
+        <CheckBox Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="22,231,226,0" 
+                  IsChecked="{Binding ChorusBypass, Mode=OneWayToSource}" />
 
     </Grid>
 </Window>

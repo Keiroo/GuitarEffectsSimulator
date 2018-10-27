@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TSKProject.Model
 {
-    class Chrous : Effect
+    class Chorus : Effect
     {
         public DiscreteSignal Process(DiscreteSignal input, int chorusMiliseconds, float chorusGain1, float chorusGain2, float volume, bool bypass)
         {
@@ -79,14 +79,14 @@ namespace TSKProject.Model
                 }
             }
 
-            return null;
+            return new DiscreteSignal(signal.SamplingRate, output);
         }
 
         private int D(int d, int n, int samplingRate)
         {
             var rand = new Random();
-            var randValue = d * (0.5f + (float)((rand.NextDouble() * 2f) - 1f));
-            var res = (int)(randValue * samplingRate);
+            var randValue = d * (0.5f + (float)((rand.NextDouble() * 2f)));
+            var res = (int)(randValue);
             return res;
         }
     }

@@ -19,6 +19,7 @@ namespace TSKProject.Model
             // Create effects objects
             delay = new Delay();
             flanger = new Flanger();
+            chorus = new Chorus();
         }
 
         public async void PlayAsync(EffectsProperties properties)
@@ -41,8 +42,15 @@ namespace TSKProject.Model
                     properties.FlangerVolume, properties.FlangerSpeed,
                     properties.FlangerBypass);
 
+                // Process chorus
+                DiscreteSignal chorusProcessed = chorus.Process(
+                    flangerProcessed,
+                    properties.ChorusMiliseconds, properties.ChorusGain1,
+                    properties.ChorusGain2, properties.ChorusVolume,
+                    properties.ChorusBypass);
+
                 // Redirect last proccesed effect to output
-                var output = flangerProcessed;
+                var output = chorusProcessed;
 
                 if (audioPlayer == null)
                 {
@@ -94,5 +102,6 @@ namespace TSKProject.Model
         private MciAudioPlayer audioPlayer;
         private Delay delay;
         private Flanger flanger;
+        private Chorus chorus;
     }
 }
