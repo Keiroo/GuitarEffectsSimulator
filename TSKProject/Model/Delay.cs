@@ -26,7 +26,10 @@ namespace TSKProject.Model
                 // Apply volume control
                 var volumeProcessed = ProcessVolume(processed, volume);
 
-                output = volumeProcessed;
+                // Apply clipping
+                var clippingProcessed = ProcessClipping(volumeProcessed);
+
+                output = clippingProcessed;
             }
             else
             {
@@ -52,9 +55,6 @@ namespace TSKProject.Model
             for (var i = samples; i < signal.Length; i++)
             {
                 output[i] = input[i] + gain * input[i - samples];
-
-                // Decrease output to avoid going over limit
-                output[i] *= 0.5f;
             }
 
             return new DiscreteSignal(signal.SamplingRate, output);
