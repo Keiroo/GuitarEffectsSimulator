@@ -17,18 +17,16 @@ namespace TSKProject.Model
             if (!bypass)
             {
                 int miliseconds;
-                float gain, speed;
+                float speed;
 
                 // Default values if zeros
                 if (flangerMiliseconds != 0) miliseconds = flangerMiliseconds;
                 else miliseconds = 1;
-                if (flangerGain != 0) gain = flangerGain;
-                else gain = 0.01f;
                 if (flangerSpeed != 0) speed = flangerSpeed;
                 else speed = 1f;
 
                 // Process delay
-                var processed = ProcessFlanger(input, miliseconds, gain, speed);
+                var processed = ProcessFlanger(input, miliseconds, flangerGain, speed);
 
                 // Apply volume control
                 var volumeProcessed = ProcessVolume(processed, volume);
