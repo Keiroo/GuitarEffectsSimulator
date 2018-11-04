@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="Model\Chorus.cs" />
     <Compile Include="Model\Delay.cs" />
+    <Compile Include="Model\Distortion.cs" />
     <Compile Include="Model\Effect.cs" />
     <Compile Include="Model\EffectsMain.cs" />
     <Compile Include="Model\EffectsProperties.cs" />
