@@ -149,14 +149,14 @@
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="Chorus" Margin="103,10,100,0" Width="61" />
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="20" Margin="22,41,224,0" Width="18" />
+                   Text="1" Margin="22,41,224,0" Width="18" />
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="40" Margin="172,40,78,0" Width="14" RenderTransformOrigin="2.286,0.5" />
+                   Text="5" Margin="172,40,78,0" Width="14" RenderTransformOrigin="2.286,0.5" />
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="Miliseconds" Margin="191,41,0,0" Width="73" />
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="{Binding ChorusMiliseconds, Mode=OneWay}" Margin="200,65,10,0" Width="54" />
-        <Slider Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="22,62,80,143" Width="162" Maximum="40" Minimum="20" 
+        <Slider Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="22,62,80,143" Width="162" Maximum="5" Minimum="1" 
                 TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding ChorusMiliseconds, Mode=OneWayToSource}" ValueChanged="ChorusMilisecondsSlider_ValueChanged"/>
 
         <!-- Chorus Gain 1 -->

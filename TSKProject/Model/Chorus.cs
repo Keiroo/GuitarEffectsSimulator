@@ -19,7 +19,7 @@ namespace TSKProject.Model
 
                 // Default values if zeros
                 if (chorusMiliseconds != 0) miliseconds = chorusMiliseconds;
-                else miliseconds = 20;
+                else miliseconds = 1;
 
                 // Process delay
                 var processed = ProcessChorus(input, miliseconds, chorusGain1, chorusGain2);
@@ -47,16 +47,26 @@ namespace TSKProject.Model
             var output = new float[input.Length];
 
             var samples = (signal.SamplingRate / 1000) * miliseconds;
+            var half = samples / 2;
+
+            int delay1 = half,
+                delay2 = half,
+                oldDelay1 = half,
+                oldDelay2 = half;
+
+            var rand = new Random();
 
             for (var i = 0; i < signal.Length; i++)
             {
-                int delay1, delay2;
-
                 // Prevent from diving by zero
-                if (i > 0) delay1 = D(samples, i, signal.SamplingRate);
-                else delay1 = 1;
-                if (i > 0) delay2 = D(samples, i, signal.SamplingRate);
-                else delay2 = 1;
+                if (i > 0)
+                {
+                    delay1 = D(samples, i, oldDelay1, rand);
+                    oldDelay1 = delay1;
+
+                    delay2 = D(samples, i, oldDelay2, rand);
+                    oldDelay2 = delay2;
+                }
 
                 // Prevent from going out of array
                 if (i - delay1 < 0)
@@ -71,7 +81,7 @@ namespace TSKProject.Model
                 // Add second delay
                 if (i - delay2 < 0)
                 {
-                    output[i] += input[i];
+                    output[i] = input[i];
                 }
                 else
                 {
@@ -82,12 +92,20 @@ namespace TSKProject.Model
             return new DiscreteSignal(signal.SamplingRate, output);
         }
 
-        private int D(int d, int n, int samplingRate)
+        private int D(int d, int n, int oldDelay, Random random)
         {
-            var rand = new Random();
-            var randValue = d * (0.5f + (float)((rand.NextDouble() * 2f)));
-            var res = (int)(randValue);
-            return res;
+            var max = d;
+            var min = 0;
+            var range = 100;
+
+            var rand = random.Next(oldDelay - range, oldDelay + range);
+
+            if (rand > max) rand = max;
+            if (rand < min) rand = min;
+
+            Console.WriteLine(rand);
+
+            return rand;
         }
     }
 }
