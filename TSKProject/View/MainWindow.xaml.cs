@@ -103,6 +103,27 @@ namespace TSKProject.View
             vm.OnPropertyChanged("ChorusVolume");
         }
 
+        private void DistGainSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnPropertyChanged("DistGain");
+        }
+
+        private void DistDistortionSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnPropertyChanged("DistDistortion");
+        }
+
+        private void DistVolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            MainWindowViewModel vm = MainGrid.DataContext as MainWindowViewModel;
+            vm.OnPropertyChanged("DistVolume");
+        }
+
+
+
+
 
     }
 }

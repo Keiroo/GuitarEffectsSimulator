@@ -22,10 +22,17 @@
         public readonly float ChorusVolume;
         public readonly bool ChorusBypass;
 
+        // Distortion
+        public readonly int DistGain;
+        public readonly int DistDistortion;
+        public readonly float DistVolume;
+        public readonly bool DistBypass;
+
 
         public EffectsProperties(int delaySamples, float delayGain, float delayVolume, bool delayBypass,
                                 int flangerSamples, float flangerGain, float flangerVolume, float flangerSpeed, bool flangerBypass,
-                                int chorusMiliseconds, float chorusGain1, float chorusGain2, float chorusVolume, bool chorusBypass
+                                int chorusMiliseconds, float chorusGain1, float chorusGain2, float chorusVolume, bool chorusBypass,
+                                int distGain, int distDistortion, float distVolume, bool distBypass
                                 )
         {
             DelaySamples = delaySamples;
@@ -42,6 +49,10 @@
             ChorusGain2 = chorusGain2;
             ChorusVolume = chorusVolume;
             ChorusBypass = chorusBypass;
+            DistGain = distGain;
+            DistDistortion = distDistortion;
+            DistVolume = distVolume;
+            DistBypass = distBypass;
         }
     }
 }

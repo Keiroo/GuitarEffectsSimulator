@@ -20,6 +20,7 @@ namespace TSKProject.Model
             delay = new Delay();
             flanger = new Flanger();
             chorus = new Chorus();
+            distortion = new Distortion();
         }
 
         public async void PlayAsync(EffectsProperties properties)
@@ -49,8 +50,15 @@ namespace TSKProject.Model
                     properties.ChorusGain2, properties.ChorusVolume,
                     properties.ChorusBypass);
 
+                // Process distortion
+                DiscreteSignal distProcessed = distortion.Process(
+                    chorusProcessed,
+                    properties.DistGain, properties.DistDistortion,
+                    properties.DistVolume, properties.DistBypass
+                    );
+
                 // Redirect last proccesed effect to output
-                var output = chorusProcessed;
+                var output = distProcessed;
 
                 if (audioPlayer == null)
                 {
@@ -103,5 +111,6 @@ namespace TSKProject.Model
         private Delay delay;
         private Flanger flanger;
         private Chorus chorus;
+        private Distortion distortion;
     }
 }

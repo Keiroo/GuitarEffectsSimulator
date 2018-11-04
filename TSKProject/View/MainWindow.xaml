@@ -109,7 +109,7 @@
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="1" Margin="172,81,85,0" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="Gain" Margin="200,81,25,0" Width="39" />
+                   Text="Gain" Margin="191,81,34,0" Width="39" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="{Binding FlangerGain, Mode=OneWay, StringFormat=N2}" Margin="200,102,25,0" Width="39" />
         <Slider Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Margin="22,100,80,100" Width="162" Maximum="1" Minimum="0" 
@@ -121,7 +121,7 @@
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="1" Margin="172,123,85,0" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="Volume" Margin="200,123,18,0" Width="46" />
+                   Text="Volume" Margin="191,123,27,0" Width="46" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="{Binding FlangerVolume, Mode=OneWay, StringFormat=N2}" Margin="200,144,25,0" Width="39" />
         <Slider Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Margin="22,141,80,59" Width="162" Maximum="1" Minimum="0" 
@@ -131,9 +131,9 @@
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="1" Margin="22,162,212,0" Width="30" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="10" Margin="172,165,78,0" Width="14" />
+                   Text="10" Margin="164,165,86,0" Width="14" RenderTransformOrigin="-0.286,0.562" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="Speed" Margin="200,165,18,0" Width="46" />
+                   Text="Speed" Margin="191,162,27,0" Width="46" />
         <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="{Binding FlangerSpeed, Mode=OneWay, StringFormat=N2}" Margin="200,181,25,0" Width="39" />
         <Slider Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Margin="22,180,80,20" Width="162" Maximum="10" Minimum="1" 
@@ -165,7 +165,7 @@
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="1" Margin="172,81,85,0" />
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="Gain1" Margin="200,81,25,0" Width="39" />
+                   Text="Gain1" Margin="191,81,34,0" Width="39" />
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="{Binding ChorusGain1, Mode=OneWay, StringFormat=N2}" Margin="200,102,25,0" Width="39" />
         <Slider Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="22,100,80,100" Width="162" Maximum="1" Minimum="0" 
@@ -177,7 +177,7 @@
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="1" Margin="172,129,85,0" />
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="Gain2" Margin="200,129,25,0" Width="39" />
+                   Text="Gain2" Margin="191,129,34,0" Width="39" RenderTransformOrigin="0.333,0.562" />
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="{Binding ChorusGain2, Mode=OneWay, StringFormat=N2}" Margin="200,150,25,0" Width="39" />
         <Slider Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="22,147,80,100" Width="162" Maximum="1" Minimum="0" 
@@ -189,7 +189,7 @@
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="1" Margin="172,172,85,0" />
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
-                   Text="Volume" Margin="200,175,10,0" Width="54" />
+                   Text="Volume" Margin="191,175,19,0" Width="54" />
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Text="{Binding ChorusVolume, Mode=OneWay, StringFormat=N2}" Margin="200,196,25,0" Width="39" />
         <Slider Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="22,193,80,54" Width="162" Maximum="1" Minimum="0" 
@@ -200,6 +200,51 @@
                    Text="Bypass" Margin="43,230,175,0" Width="46" />
         <CheckBox Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="22,231,226,0" 
                   IsChecked="{Binding ChorusBypass, Mode=OneWayToSource}" />
+
+        <!-- Distortion Gain-->
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Distortion" Margin="103,10,100,0" Width="61" />
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="0" Margin="22,41,224,0" Width="18" />
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="100" Margin="162,40,78,0" Width="24" RenderTransformOrigin="2.286,0.5" />
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Gain" Margin="191,41,0,0" Width="73" />
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="{Binding DistGain, Mode=OneWay}" Margin="200,65,10,0" Width="54" />
+        <Slider Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Margin="22,62,80,143" Width="162" Maximum="100" Minimum="0" 
+                TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding DistGain, Mode=OneWayToSource}" ValueChanged="DistGainSlider_ValueChanged"/>
+
+        <!-- Distortion Distortion -->
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="0" Margin="22,81,212,0" Width="30" />
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="100" Margin="162,81,78,0" Width="24" />
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Distortion" Margin="191,81,19,0" Width="54" />
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="{Binding DistDistortion, Mode=OneWay}" Margin="200,102,25,0" Width="39" />
+        <Slider Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Margin="22,100,80,100" Width="162" Maximum="100" Minimum="0" 
+                TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding DistDistortion, Mode=OneWayToSource}" ValueChanged="DistDistortionSlider_ValueChanged"/>
+
+        <!-- Distortion Volume -->
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="0" Margin="22,129,212,0" Width="30" />
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="1" Margin="172,129,85,0" />
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Volume" Margin="191,129,25,0" Width="48" RenderTransformOrigin="0.333,0.562" />
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="{Binding DistVolume, Mode=OneWay, StringFormat=N2}" Margin="200,150,25,0" Width="39" />
+        <Slider Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Margin="22,147,80,100" Width="162" Maximum="1" Minimum="0" 
+                Value="{Binding DistVolume, Mode=OneWayToSource}" ValueChanged="DistVolumeSlider_ValueChanged"/>
+
+        <!-- Chorus Bypass -->
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Text="Bypass" Margin="43,180,175,0" Width="46" RenderTransformOrigin="0.457,0.501" />
+        <CheckBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="22,181,226,0" 
+                  IsChecked="{Binding DistBypass, Mode=OneWayToSource}" RenderTransformOrigin="0.688,-1.6" />
+
 
     </Grid>
 </Window>

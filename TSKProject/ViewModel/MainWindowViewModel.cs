@@ -29,6 +29,12 @@ namespace TSKProject.ViewModel
         public float ChorusVolume { get; set; }
         public bool ChorusBypass { get; set; }
 
+        // Distortion
+        public int DistGain { get; set; }
+        public int DistDistortion { get; set; }
+        public float DistVolume { get; set; }
+        public bool DistBypass { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         
 
@@ -57,7 +63,8 @@ namespace TSKProject.ViewModel
             var properties = new EffectsProperties(
                 DelaySamples, DelayGain, DelayVolume, DelayBypass,
                 FlangerSamples, FlangerGain, FlangerVolume, FlangerSpeed, FlangerBypass,
-                ChorusMiliseconds, ChorusGain1, ChorusGain2, ChorusVolume, ChorusBypass);
+                ChorusMiliseconds, ChorusGain1, ChorusGain2, ChorusVolume, ChorusBypass,
+                DistGain, DistDistortion, DistVolume, DistBypass);
 
             main.PlayAsync(properties);
         }
