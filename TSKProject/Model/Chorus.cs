@@ -46,26 +46,26 @@ namespace TSKProject.Model
             var input = signal.Samples;
             var output = new float[input.Length];
 
-            var samples = (signal.SamplingRate / 1000) * miliseconds;
-            var half = samples / 2;
+            var random = new Random();
 
-            int delay1 = half,
-                delay2 = half,
-                oldDelay1 = half,
-                oldDelay2 = half;
 
-            var rand = new Random();
+            var samples1 = (int)((signal.SamplingRate / 1000) * miliseconds);
+            var samples2 = (int)((signal.SamplingRate / 1000) * (2 * miliseconds));
+
+            int delay1, delay2;
 
             for (var i = 0; i < signal.Length; i++)
             {
                 // Prevent from diving by zero
                 if (i > 0)
                 {
-                    delay1 = D(samples, i, oldDelay1, rand);
-                    oldDelay1 = delay1;
-
-                    delay2 = D(samples, i, oldDelay2, rand);
-                    oldDelay2 = delay2;
+                    delay1 = D(samples1, i, 1f, signal.SamplingRate);
+                    delay2 = D(samples2, i, 1f, signal.SamplingRate);
+                }
+                else
+                {
+                    delay1 = 1;
+                    delay2 = 1;
                 }
 
                 // Prevent from going out of array
@@ -77,35 +77,21 @@ namespace TSKProject.Model
                 {
                     output[i] = input[i] + gain1 * input[i - delay1];
                 }
-
-                // Add second delay
-                if (i - delay2 < 0)
-                {
-                    output[i] = input[i];
-                }
-                else
+                if (i - delay2 >= 0)
                 {
                     output[i] += input[i] + gain2 * input[i - delay2];
                 }
             }
 
             return new DiscreteSignal(signal.SamplingRate, output);
-        }
+        }        
 
-        private int D(int d, int n, int oldDelay, Random random)
+        private int D(int d, int n, float F, int samplingRate)
         {
-            var max = d;
-            var min = 0;
-            var range = 100;
-
-            var rand = random.Next(oldDelay - range, oldDelay + range);
-
-            if (rand > max) rand = max;
-            if (rand < min) rand = min;
-
-            Console.WriteLine(rand);
-
-            return rand;
+            var cos = Math.Cos(2 * Math.PI * F * (n / (float)samplingRate));
+            var coeff = (cos + 1);
+            var res = (int)(d * coeff);
+            return res;
         }
     }
 }
